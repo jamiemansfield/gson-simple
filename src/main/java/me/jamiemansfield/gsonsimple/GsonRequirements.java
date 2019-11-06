@@ -71,6 +71,27 @@ public final class GsonRequirements {
         return element.getAsInt();
     }
 
+    public static long requireLong(final JsonElement element, final String errorMessage) throws JsonParseException {
+        if (!isNumber(element)) {
+            throw new JsonParseException(errorMessage);
+        }
+        return element.getAsLong();
+    }
+
+    public static double requireDouble(final JsonElement element, final String errorMessage) throws JsonParseException {
+        if (!isNumber(element)) {
+            throw new JsonParseException(errorMessage);
+        }
+        return element.getAsDouble();
+    }
+
+    public static float requireFloat(final JsonElement element, final String errorMessage) throws JsonParseException {
+        if (!isNumber(element)) {
+            throw new JsonParseException(errorMessage);
+        }
+        return element.getAsFloat();
+    }
+
     private GsonRequirements() {
     }
 

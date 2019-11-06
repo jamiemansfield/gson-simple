@@ -27,7 +27,10 @@ package me.jamiemansfield.gsonsimple;
 
 import static me.jamiemansfield.gsonsimple.GsonRequirements.requireArray;
 import static me.jamiemansfield.gsonsimple.GsonRequirements.requireBoolean;
+import static me.jamiemansfield.gsonsimple.GsonRequirements.requireDouble;
+import static me.jamiemansfield.gsonsimple.GsonRequirements.requireFloat;
 import static me.jamiemansfield.gsonsimple.GsonRequirements.requireInt;
+import static me.jamiemansfield.gsonsimple.GsonRequirements.requireLong;
 import static me.jamiemansfield.gsonsimple.GsonRequirements.requireObject;
 import static me.jamiemansfield.gsonsimple.GsonRequirements.requireString;
 
@@ -68,6 +71,21 @@ public final class GsonObjects {
     public static int getInt(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
         return requireInt(value, "'" + key + "' entry must be an int!");
+    }
+
+    public static double getDouble(final JsonObject object, final String key) throws JsonParseException {
+        final JsonElement value = get(object, key);
+        return requireDouble(value, "'" + key + "' entry must be a double!");
+    }
+
+    public static long getLong(final JsonObject object, final String key) throws JsonParseException {
+        final JsonElement value = get(object, key);
+        return requireLong(value, "'" + key + "' entry must be a long!");
+    }
+
+    public static float getFloat(final JsonObject object, final String key) throws JsonParseException {
+        final JsonElement value = get(object, key);
+        return requireFloat(value, "'" + key + "' entry must be a float!");
     }
 
     private GsonObjects() {

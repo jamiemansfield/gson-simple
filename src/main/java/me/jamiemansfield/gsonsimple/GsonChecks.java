@@ -27,18 +27,49 @@ package me.jamiemansfield.gsonsimple;
 
 import com.google.gson.JsonElement;
 
+/**
+ * Simple checks to determine the underlying type of a
+ * {@link JsonElement JSON element.}
+ *
+ * @author Jamie Mansfield
+ * @since 0.1.0
+ */
 public final class GsonChecks {
 
+    /**
+     * Establishes whether the {@link JsonElement JSON element} represents
+     * a string.
+     *
+     * @param element The element to check
+     * @return {@code true} if the element represents a string;
+     *         otherwise {@code false}
+     */
     public static boolean isString(final JsonElement element) {
         return element.isJsonPrimitive() &&
                 element.getAsJsonPrimitive().isString();
     }
 
+    /**
+     * Establishes whether the {@link JsonElement JSON element} represents
+     * a boolean.
+     *
+     * @param element The element to check
+     * @return {@code true} if the element represents a boolean;
+     *         otherwise {@code false}
+     */
     public static boolean isBoolean(final JsonElement element) {
         return element.isJsonPrimitive() &&
                 element.getAsJsonPrimitive().isBoolean();
     }
 
+    /**
+     * Establishes whether the {@link JsonElement JSON element} represents
+     * a number.
+     *
+     * @param element The element to check
+     * @return {@code true} if the element represents a number;
+     *         otherwise {@code false}
+     */
     public static boolean isNumber(final JsonElement element) {
         return element.isJsonPrimitive() &&
                 element.getAsJsonPrimitive().isNumber();

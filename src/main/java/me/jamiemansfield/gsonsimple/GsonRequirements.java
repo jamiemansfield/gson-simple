@@ -34,60 +34,130 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
+/**
+ * Utility for ensuring the types of {@link JsonElement elements}.
+ *
+ * @author Jamie Mansfield
+ * @since 0.1.0
+ */
 public final class GsonRequirements {
 
-    public static JsonObject requireObject(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a {@link JsonObject JSON object}.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return A JSON object
+     * @throws JsonParseException If the element isn't an object
+     */
+    public static JsonObject requireObject(final JsonElement element, final String name) throws JsonParseException {
         if (!element.isJsonObject()) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be an object!");
         }
         return element.getAsJsonObject();
     }
 
-    public static JsonArray requireArray(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a {@link JsonArray JSON array}.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return A JSON array
+     * @throws JsonParseException If the element isn't an array
+     */
+    public static JsonArray requireArray(final JsonElement element, final String name) throws JsonParseException {
         if (!element.isJsonArray()) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be an array!");
         }
         return element.getAsJsonArray();
     }
 
-    public static String requireString(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a string.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return The value
+     * @throws JsonParseException If the element isn't a string
+     */
+    public static String requireString(final JsonElement element, final String name) throws JsonParseException {
         if (!isString(element)) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be a string!");
         }
         return element.getAsString();
     }
 
-    public static boolean requireBoolean(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a boolean.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return The value
+     * @throws JsonParseException If the element isn't a boolean
+     */
+    public static boolean requireBoolean(final JsonElement element, final String name) throws JsonParseException {
         if (!isBoolean(element)) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be a boolean!");
         }
         return element.getAsBoolean();
     }
 
-    public static int requireInt(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as an integer.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return The value
+     * @throws JsonParseException If the element isn't an integer
+     */
+    public static int requireInt(final JsonElement element, final String name) throws JsonParseException {
         if (!isNumber(element)) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be an integer!");
         }
         return element.getAsInt();
     }
 
-    public static long requireLong(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a long.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return The value
+     * @throws JsonParseException If the element isn't a long
+     */
+    public static long requireLong(final JsonElement element, final String name) throws JsonParseException {
         if (!isNumber(element)) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be a long!");
         }
         return element.getAsLong();
     }
 
-    public static double requireDouble(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a double.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return The value
+     * @throws JsonParseException If the element isn't a double
+     */
+    public static double requireDouble(final JsonElement element, final String name) throws JsonParseException {
         if (!isNumber(element)) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be a double!");
         }
         return element.getAsDouble();
     }
 
-    public static float requireFloat(final JsonElement element, final String errorMessage) throws JsonParseException {
+    /**
+     * Gets the {@link JsonElement} as a float.
+     *
+     * @param element The element
+     * @param name The name of the element
+     * @return The value
+     * @throws JsonParseException If the element isn't a float
+     */
+    public static float requireFloat(final JsonElement element, final String name) throws JsonParseException {
         if (!isNumber(element)) {
-            throw new JsonParseException(errorMessage);
+            throw new JsonParseException("Expected '" + name + "' to be a float!");
         }
         return element.getAsFloat();
     }

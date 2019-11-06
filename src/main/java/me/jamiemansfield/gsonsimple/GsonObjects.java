@@ -39,8 +39,24 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 
+/**
+ * Utility for grabbing {@link JsonElement elements} from
+ * {@link JsonObject JSON objects}.
+ *
+ * @author Jamie Mansfield
+ * @since 0.1.0
+ */
 public final class GsonObjects {
 
+    /**
+     * Gets an {@link JsonElement element} from the given {@link JsonObject object},
+     * throwing a {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The JSON element
+     * @throws JsonParseException If the object is missing the entry
+     */
     public static JsonElement get(final JsonObject object, final String key) throws JsonParseException {
         if (!object.has(key)) {
             throw new JsonParseException("Object missing '" + key + "' entry!");
@@ -48,44 +64,116 @@ public final class GsonObjects {
         return object.get(key);
     }
 
+    /**
+     * Gets an {@link JsonObject object} from the given {@link JsonObject object},
+     * throwing a {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The JSON object
+     * @throws JsonParseException If the object is missing the entry, or it isn't an object
+     */
     public static JsonObject getObject(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireObject(value, "'" + key + "' entry must be an object!");
+        return requireObject(value, key);
     }
 
+    /**
+     * Gets an {@link JsonArray array} from the given {@link JsonObject object},
+     * throwing a {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The JSON array
+     * @throws JsonParseException If the object is missing the entry, or it isn't an array
+     */
     public static JsonArray getArray(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireArray(value, "'" + key + "' entry must be an array!");
+        return requireArray(value, key);
     }
 
+    /**
+     * Gets a string from the given {@link JsonObject object}, throwing a
+     * {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The value
+     * @throws JsonParseException If the object is missing the entry, or it isn't a string
+     */
     public static String getString(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireString(value, "'" + key + "' entry must be a string!");
+        return requireString(value, key);
     }
 
+    /**
+     * Gets a boolean from the given {@link JsonObject object}, throwing a
+     * {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The value
+     * @throws JsonParseException If the object is missing the entry, or it isn't a boolean
+     */
     public static boolean getBoolean(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireBoolean(value, "'" + key + "' entry must be a boolean!");
+        return requireBoolean(value, key);
     }
 
+    /**
+     * Gets an integer from the given {@link JsonObject object}, throwing a
+     * {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The value
+     * @throws JsonParseException If the object is missing the entry, or it isn't an integer
+     */
     public static int getInt(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireInt(value, "'" + key + "' entry must be an int!");
+        return requireInt(value, key);
     }
 
+    /**
+     * Gets a double from the given {@link JsonObject object}, throwing a
+     * {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The value
+     * @throws JsonParseException If the object is missing the entry, or it isn't a double
+     */
     public static double getDouble(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireDouble(value, "'" + key + "' entry must be a double!");
+        return requireDouble(value, key);
     }
 
+    /**
+     * Gets a long from the given {@link JsonObject object}, throwing a
+     * {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The value
+     * @throws JsonParseException If the object is missing the entry, or it isn't a long
+     */
     public static long getLong(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireLong(value, "'" + key + "' entry must be a long!");
+        return requireLong(value, key);
     }
 
+    /**
+     * Gets a float from the given {@link JsonObject object}, throwing a
+     * {@link JsonParseException} if not present.
+     *
+     * @param object The JSON object
+     * @param key The key of the entry
+     * @return The value
+     * @throws JsonParseException If the object is missing the entry, or it isn't a float
+     */
     public static float getFloat(final JsonObject object, final String key) throws JsonParseException {
         final JsonElement value = get(object, key);
-        return requireFloat(value, "'" + key + "' entry must be a float!");
+        return requireFloat(value, key);
     }
 
     private GsonObjects() {

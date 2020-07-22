@@ -51,6 +51,7 @@ public final class GsonRequirements {
      * @throws JsonParseException If the element isn't an object
      */
     public static JsonObject requireObject(final JsonElement element, final String name) throws JsonParseException {
+        if (element.isJsonNull()) return null;
         if (!element.isJsonObject()) {
             throw new JsonParseException("Expected '" + name + "' to be an object!");
         }
@@ -66,6 +67,7 @@ public final class GsonRequirements {
      * @throws JsonParseException If the element isn't an array
      */
     public static JsonArray requireArray(final JsonElement element, final String name) throws JsonParseException {
+        if (element.isJsonNull()) return null;
         if (!element.isJsonArray()) {
             throw new JsonParseException("Expected '" + name + "' to be an array!");
         }
@@ -81,6 +83,7 @@ public final class GsonRequirements {
      * @throws JsonParseException If the element isn't a string
      */
     public static String requireString(final JsonElement element, final String name) throws JsonParseException {
+        if (element.isJsonNull()) return null;
         if (!isString(element)) {
             throw new JsonParseException("Expected '" + name + "' to be a string!");
         }

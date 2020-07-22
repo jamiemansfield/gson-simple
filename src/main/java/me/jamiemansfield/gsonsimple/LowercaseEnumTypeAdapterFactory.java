@@ -42,7 +42,7 @@ import java.util.Map;
  * to be serialised/de-serialised with their lowercase names.
  *
  * @author Jamie Mansfield
- * @since 0.1.0
+ * @since 0.1.1
  */
 public class LowercaseEnumTypeAdapterFactory implements TypeAdapterFactory {
 

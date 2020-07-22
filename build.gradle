@@ -15,7 +15,7 @@ java {
 
 group = 'me.jamiemansfield'
 archivesBaseName = project.name.toLowerCase()
-version = '0.1.2-SNAPSHOT'
+version = '0.1.2'
 
 repositories {
     mavenCentral()
@@ -104,6 +104,7 @@ publishing {
 if (project.hasProperty('ossrhUsername') && project.hasProperty('ossrhPassword')) {
     apply plugin: 'signing'
     signing {
+        useGpgCmd()
         required { !version.endsWith('-SNAPSHOT') && gradle.taskGraph.hasTask(tasks.publish) }
         sign publishing.publications.mavenJava
     }
